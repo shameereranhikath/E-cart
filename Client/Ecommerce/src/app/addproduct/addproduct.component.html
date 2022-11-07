@@ -1,0 +1,110 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-success border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading1 text-white font-weight-bold">Ecommerce</div>
+    <!-- <div class="text-white text-center font-weight-bold">Ecommerce</div> -->
+    <!-- <h2 class="text-white pl-5">Ecommerce</h2> -->
+    <div class="list-group list-group-flush">
+      <a
+        href="userlist"
+        class="list-group-item list-group-item-action bg-success font-weight-bold text-white"
+        >Users</a
+      >
+      <a
+        href="productlist"
+        class="list-group-item list-group-item-action bg-success font-weight-bold text-white"
+        >Products</a
+      >
+      <a
+        href="categorylist"
+        class="list-group-item list-group-item-action bg-success font-weight-bold text-white"
+        >Category</a
+      >
+      <a
+        href="products"
+        class="list-group-item list-group-item-action bg-success font-weight-bold text-white"
+        >Logout</a
+      >
+      <!-- <a href="#" class="list-group-item list-group-item-action bg-success"
+        >Events</a
+      >
+      <a href="#" class="list-group-item list-group-item-action bg-success"
+        >Profile</a
+      >
+      <a href="#" class="list-group-item list-group-item-action bg-success"
+        >Status</a
+      > -->
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+   <!-- End Exact Content -->
+  <!--//#page-content-wrapper -->
+
+<br>
+<br>
+<div class="container">
+
+
+<form [formGroup]="prdtform" (ngSubmit)="onSubmitform()">
+
+  <label for="prnm" class="form-label">Product Name: </label>
+  <input id="prnm" type="text" formControlName="prnm" class="form-control">
+  <div *ngIf="f['prnm'].touched && f['prnm'].invalid" class="alert alert-danger">
+    <div *ngIf="f['prnm'].errors && f['prnm'].errors['required']"> Product Name is required.</div>
+  </div>
+
+
+
+  <label for="description" class="form-label">Description: </label>
+  <!-- <textarea id="w3review" name="w3review" rows="4" cols="50" class="form-control"></textarea> -->
+  <input id="description" type="text" formControlName="description" class="form-control">
+  <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+    <div *ngIf="f['description'].errors && f['description'].errors['required']"> Description is required.</div>
+  </div>
+
+
+  <label for="qty" class="form-label">Quantity: </label>
+<input id="qty" type="text" formControlName="qty" class="form-control">
+<div *ngIf="f['qty'].touched && f['qty'].invalid" class="alert alert-danger" >
+  <div *ngIf="f['qty'].errors && f['qty'].errors['required']"> Quantity is required.</div>
+</div>
+
+
+
+<label for="priceperunit" class="form-label">Price Per Unit: </label>
+<input id="priceperunit" type="text" formControlName="priceperunit" class="form-control">
+<div *ngIf="f['priceperunit'].touched && f['priceperunit'].invalid" class="alert alert-danger">
+  <div *ngIf="f['priceperunit'].errors && f['priceperunit'].errors['required']"> Price Per Unit is required.</div>
+</div>
+
+
+
+<label for="image" class="form-label">Image : </label>
+<input  formControlName="image" id="image" type="file" class="form-control" (change)="onFileChange($event)">
+<div *ngIf="f['image'].touched && f['image'].invalid" class="alert alert-danger">
+  <div *ngIf="f['image'].errors && f['image'].errors['required']"> Please Upload Product Image.</div>
+</div>
+
+
+<img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
+<br/>
+<button class="btn btn-primary" [disabled]="prdtform.invalid" type="submit">Save And Upload Image</button>
+</form>
+
+
+
+
+</div>
+
+<router-outlet></router-outlet>
+
+
+
+</div>
+
+<!-- /#wrapper -->
+

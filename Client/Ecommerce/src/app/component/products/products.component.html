@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <ng-container
+      *ngFor="let item of filterCategory | filter: searchKey:'title'"
+    >
+      <div class="card col-md-3">
+        <!-- <img src="{{ item.image }}" alt="" /> -->
+        <img src="../../assets/{{ item.name }}" alt="" />
+
+        <h5
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.prnm }}
+        </h5>
+        <p
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.description }}
+        </p>
+        <p><strong>Price:</strong> ${{ item.priceperunit }}</p>
+        <button class="btn btn-success" (click)="addtocart(item)">
+          Add to cart
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
